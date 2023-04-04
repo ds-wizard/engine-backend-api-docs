@@ -7,17 +7,17 @@ all:
 build:
 	$(MAKE) clean
 	$(MAKE) prepare-dir
-	python3.11 main.py
+	python3.11 scripts/main.py
 
 .PHONY: test
 test:
-	python3.11 test.py
+	python3.11 scripts/test.py
 
 .PHONY: prepare-dir
 prepare-dir:
-	mkdir output output/assets output/diffs output/specifications
+	mkdir output output/assets output/diffs output/specs
 	cp assets/* output/assets
-	cp specifications/* output/specifications
+	cp specs/* output/specs
 
 .PHONY: clean
 clean:

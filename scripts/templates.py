@@ -1,6 +1,7 @@
 from string import Template
 
-indexTemplate = Template("""
+
+INDEX_TEMPLATE = Template("""
 <!DOCTYPE html>
 <html lang="en">
 <head>
