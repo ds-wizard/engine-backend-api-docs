@@ -25,5 +25,5 @@ clean:
 
 .PHONY: docker
 docker:
-	docker build -t vknaisl/wizard-api-docs .
-	docker run --rm --name "wizard-api-docs" -p 8888:80 vknaisl/wizard-api-docs
+	docker build -t wizard-api-docs:local .
+	docker run --rm --name "wizard-api-docs" -p 8888:8080 wizard-api-docs:local
