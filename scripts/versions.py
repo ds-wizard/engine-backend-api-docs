@@ -1,8 +1,8 @@
-import os
+import pathlib
 
 
-def get_versions():
-    files = [spec.replace(".json", "") for spec in os.listdir("./specifications/")]
+def get_versions(specs_dir: pathlib.Path):
+    files = [spec.name.replace('.json', '') for spec in specs_dir.glob('*.json')]
     strings = map(lambda version: version.split('.'), files)
     versions = list(map(lambda version: (int(version[0]), int(version[1]), int(version[2])), strings))
     sorted_versions = sorted(versions)
