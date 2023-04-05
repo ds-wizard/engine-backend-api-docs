@@ -9,27 +9,27 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: Check out repository
-      uses: actions/checkout@v3
+      - name: Check out repository
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.11
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
 
-    - name: Run tests
-      run: |
-        make test
+      - name: Run tests
+        run: |
+          make test
 
-    - name: Build
-      run: |
-        make build
+      - name: Build
+        run: |
+          make build
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: output
-        path: ./output
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: output
+          path: ./output
 
   docker:
     name: Docker
@@ -44,6 +44,9 @@ jobs:
       DOCKER_META_PLATFORMS: 'linux/amd64,linux/arm64'
 
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 

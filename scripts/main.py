@@ -5,11 +5,13 @@ from templates import INDEX_TEMPLATE
 from versions import compute_diff_versions, get_versions
 
 
+DIFFS_DIRNAME = 'changelogs'
+SPECS_DIRNAME = 'specs'
 ENCODING = 'utf-8'
 ROOT_DIR = pathlib.Path(__file__).parent.parent
 OUTPUT_DIR = ROOT_DIR / 'output'
-DIFFS_DIR = OUTPUT_DIR / 'diffs'
-SPECS_DIR = ROOT_DIR / 'specs'
+DIFFS_DIR = OUTPUT_DIR / DIFFS_DIRNAME
+SPECS_DIR = ROOT_DIR / SPECS_DIRNAME
 JAR_FILE = ROOT_DIR / 'bin' / 'swagger-diff.jar'
 
 
@@ -35,24 +37,21 @@ def adjust_styles(old_version, new_version):
                 f_out.write(
                     line
                     .replace(
+                        '<title>Changelog</title>',
+                        f'<title>DSW API Changelog | {old_version} ➔ {new_version}</title>'
+                    )
+                    .replace(
+                        '<link rel="stylesheet" href="http://deepoove.com/swagger-diff/stylesheets/demo.css">',
+                        '<link rel="stylesheet" href="../assets/style.diff.css">'
+                        '<link rel="shortcut icon" href="assets/favicon.ico">'
+                    )
+                    .replace(
                         '<header><h1>Changelog</h1></header>',
-                        '<header style="background: #f4f4f4; color: #4D4948;"><h1 style="display: flex; align-items: center; margin: auto; max-width: 960px;"><img class="logo" src="../assets/dsw-logo-horizontal-color-transparent.svg" style="height: 30px; margin-right: 10px;"></img>| API Changelog</h1></header>'
-                    )
-                    .replace(
-                        '<body>',
-                        '<body style="font-family: Open-Sans, sans-serif">'
-                    )
-                    .replace(
-                        '<ol id="new">',
-                        '<ol id="new" style="font-family: monospace">'
-                    )
-                    .replace(
-                        '<ol id="deprecated">',
-                        '<ol id="deprecated" style="font-family: monospace">'
-                    )
-                    .replace(
-                        '<ol id="changed">',
-                        '<ol id="changed" style="font-family: monospace">'
+                        f'<header><h1>'
+                        f'<img class="logo" src="../assets/dsw-logo-horizontal-color-transparent.svg"></img>'
+                        f'<div>| API Changelog ({old_version} ➔ {new_version})</div>'
+                        f'<div class="back-link"><a href="/">&#128281;</a></div>'
+                        f'</h1></header>'
                     )
                 )
     in_file.unlink()
@@ -61,14 +60,22 @@ def adjust_styles(old_version, new_version):
 def create_api_docs_html(versions):
     api_docs_rows = []
     for (major, minor, patch) in reversed(versions):
-        api_docs_rows.append(f'<tr><td scope="row">{major}.{minor}.{patch}</td><td><a href="specifications/{major}.{minor}.{patch}.json">swagger.json</a></td></tr>')
+        api_docs_rows.append(f'<tr>'
+                             f'<td scope="row">{major}.{minor}.{patch}</td>'
+                             f'<td><a href="/swagger-ui/?spec=/specs/{major}.{minor}.{patch}.json" target="_blank">Swagger UI</a></td>'
+                             f'<td><a href="./{SPECS_DIRNAME}/{major}.{minor}.{patch}.json" target="_blank">swagger.json</a></td>'
+                             f'</tr>')
     return '\n'.join(api_docs_rows)
 
 
 def create_changes_html(diff_versions):
     changes_rows = []
     for (old_version, new_version) in reversed(diff_versions):
-        changes_rows.append(f'<tr><td>{old_version}</td><td>{new_version}</td><td><a href="diffs/{old_version}-{new_version}.html">View Changes</a></td></tr>')
+        changes_rows.append(f'<tr>'
+                            f'<td>{old_version}</td>'
+                            f'<td>{new_version}</td>'
+                            f'<td><a href="./{DIFFS_DIRNAME}/{old_version}-{new_version}.html">View Changes</a></td>'
+                            f'</tr>')
     return '\n'.join(changes_rows)
 
 

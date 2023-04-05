@@ -8,62 +8,20 @@ INDEX_TEMPLATE = Template("""
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Wizard API Docs</title>
+    <title>DSW API Docs</title>
+    <link rel="shortcut icon" href="assets/favicon.ico">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Custom CSS -->
-    <style>
-        body {
-            font-family: Open-Sans, sans-serif;
-        }
-        
-        header {
-            background-color: #f4f4f4;
-            height: 138px;
-            line-height: 68px;
-            padding: 0 20px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: -1;
-        }
-
-        header h1 {
-            display: flex;
-            align-items: center;
-            max-width: 960px;
-            margin: auto;
-            font-size: 28px;
-            line-height: 68px;
-        }
-        
-        h1 img {
-            height: 30px;
-            margin-right: 10px;
-        }
-        
-        .article {
-            padding: 10px 30px;
-            max-width: 1000px;
-            margin: 0px auto;
-            box-shadow: 0px 0px 4px #ccc;
-            background: #fff;
-            margin-top: 80px;
-        }
-
-        h2 {
-            margin-top: 30px;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
 <header>
     <h1>
-        <img src="./assets/dsw-logo-horizontal-color-transparent.svg" alt="Logo">
-        | API Docs
+        <img src="./assets/dsw-logo-horizontal-color-transparent.svg" alt="Logo" class="logo">
+        <div class="title">| API Docs</div>
     </h1>
 </header>
 
@@ -74,7 +32,7 @@ INDEX_TEMPLATE = Template("""
         <thead>
         <tr>
             <th scope="col">Version</th>
-            <th scope="col">Link</th>
+            <th scope="col" colspan="2">Link</th>
         </tr>
         </thead>
         <tbody>

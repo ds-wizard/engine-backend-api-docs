@@ -21,7 +21,7 @@ $ make build
 
 ### How to add new version of API Docs?
 
-Add the Swagger specification under the corresponding version into the `specifications` folder. Then, run the `make build` to rebuild the project. The result will be in the `output` folder. 
+Add the Swagger specification under the corresponding version into the `specs` folder. Then, run the `make build` to rebuild the project. The result will be in the `output` folder. 
 
 ## License
 

@@ -15,9 +15,10 @@ test:
 
 .PHONY: prepare-dir
 prepare-dir:
-	mkdir output output/assets output/diffs output/specs
+	mkdir output output/assets output/changelogs output/specs
 	cp assets/* output/assets
 	cp specs/* output/specs
+	cp -r vendor/swagger-ui output/swagger-ui
 
 .PHONY: clean
 clean:
