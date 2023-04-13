@@ -28,3 +28,7 @@ clean:
 docker:
 	docker build -t wizard-api-docs:local .
 	docker run --rm --name "wizard-api-docs" -p 8888:8080 wizard-api-docs:local
+
+.PHONY: download-latest-spec
+download-latest-spec:
+	curl -Lo specs/3.22.3.json https://api-app.ds-wizard.org/swagger.json
