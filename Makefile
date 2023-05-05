@@ -31,4 +31,4 @@ docker:
 
 .PHONY: download-latest-spec
 download-latest-spec:
-	curl -Lo specs/3.23.0.json https://api-app.ds-wizard.org/swagger.json
+	curl -Lo specs/3.23.1.json https://api-app.ds-wizard.org/swagger.json
