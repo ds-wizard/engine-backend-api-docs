@@ -14052,7 +14052,7 @@
         "body": "{}",
         "component": "component1",
         "createdAt": "2018-01-25T00:00:00Z",
-        "createdBy": null,
+        "createdBy": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66",
         "function": "function1",
         "internal": true,
         "lastErrorMessage": null,
@@ -18322,7 +18322,6 @@
     },
     "UserTokenDTO": {
       "example": {
-        "expiresAt": "2018-01-25T00:00:00Z",
         "token": "sometToken",
         "type": "UserToken"
       },
@@ -18337,16 +18336,12 @@
         },
         "UserToken": {
           "properties": {
-            "expiresAt": {
-              "$ref": "#/definitions/UTCTime"
-            },
             "token": {
               "type": "string"
             }
           },
           "required": [
-            "token",
-            "expiresAt"
+            "token"
           ],
           "type": "object"
         }
@@ -18528,7 +18523,7 @@
       "url": "https://raw.githubusercontent.com/ds-wizard/engine-backend/main/LICENSE.md"
     },
     "title": "Wizard API",
-    "version": "3.24.0"
+    "version": "3.23.3"
   },
   "paths": {
     "/": {

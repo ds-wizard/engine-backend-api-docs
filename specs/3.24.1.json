@@ -18528,7 +18528,7 @@
       "url": "https://raw.githubusercontent.com/ds-wizard/engine-backend/main/LICENSE.md"
     },
     "title": "Wizard API",
-    "version": "3.24.0"
+    "version": "3.24.1"
   },
   "paths": {
     "/": {
