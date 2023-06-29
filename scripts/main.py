@@ -38,7 +38,7 @@ def adjust_styles(old_version, new_version):
                     line
                     .replace(
                         '<title>Changelog</title>',
-                        f'<title>DSW API Changelog | {old_version} ➔ {new_version}</title>'
+                        f'<title>Wizard API Changelog | {old_version} ➔ {new_version}</title>'
                     )
                     .replace(
                         '<link rel="stylesheet" href="http://deepoove.com/swagger-diff/stylesheets/demo.css">',
@@ -48,7 +48,7 @@ def adjust_styles(old_version, new_version):
                     .replace(
                         '<header><h1>Changelog</h1></header>',
                         f'<header><h1>'
-                        f'<img class="logo" src="../assets/dsw-logo-horizontal-color-transparent.svg"></img>'
+                        f'<img class="logo" src="../assets/logo.svg"></img>'
                         f'<div>| API Changelog ({old_version} ➔ {new_version})</div>'
                         f'<div class="back-link"><a href="/">&#128281;</a></div>'
                         f'</h1></header>'

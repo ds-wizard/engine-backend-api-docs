@@ -8,7 +8,7 @@ INDEX_TEMPLATE = Template("""
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DSW API Docs</title>
+    <title>Wizard API Docs</title>
     <link rel="shortcut icon" href="assets/favicon.ico">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -20,7 +20,7 @@ INDEX_TEMPLATE = Template("""
 
 <header>
     <h1>
-        <img src="./assets/dsw-logo-horizontal-color-transparent.svg" alt="Logo" class="logo">
+        <img src="./assets/logo.svg" alt="Logo" class="logo">
         <div class="title">| API Docs</div>
     </h1>
 </header>
