@@ -15,6 +15,8 @@ INDEX_TEMPLATE = Template("""
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/style.css">
+    <!-- Custom JS -->
+    <script src="assets/custom.js"></script>
 </head>
 <body>
 

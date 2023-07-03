@@ -43,7 +43,8 @@ def adjust_styles(old_version, new_version):
                     .replace(
                         '<link rel="stylesheet" href="http://deepoove.com/swagger-diff/stylesheets/demo.css">',
                         '<link rel="stylesheet" href="../assets/style.diff.css">'
-                        '<link rel="shortcut icon" href="assets/favicon.ico">'
+                        '<link rel="shortcut icon" href="../assets/favicon.ico">'
+                        '<script src="../assets/custom.js"></script>'
                     )
                     .replace(
                         '<header><h1>Changelog</h1></header>',
