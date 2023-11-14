@@ -14,19 +14,23 @@ class VersionsTest(unittest.TestCase):
         # WHEN:
         result = compute_diff_versions(versions)
         # THEN:
-        self.assertEqual(result, expectation)
+        self.assertEqual(expectation, result)
 
     def test_compute_diff_versions_2(self):
         # GIVEN:
         versions = [
             (3, 20, 0),
             (3, 21, 0),
+            (4, 0, 0),
         ]
-        expectation = [('3.20.0', '3.21.0')]
+        expectation = [
+            ('3.20.0', '3.21.0'),
+            ('3.21.0', '4.0.0')
+        ]
         # WHEN:
         result = compute_diff_versions(versions)
         # THEN:
-        self.assertEqual(result, expectation)
+        self.assertEqual(expectation, result)
 
     def test_compute_diff_versions_3(self):
         # GIVEN:
@@ -51,7 +55,6 @@ class VersionsTest(unittest.TestCase):
         ]
         expectation = [
             ('3.20.0', '3.21.0'),
-            ('3.21.0', '3.22.0'),
             ('3.21.0', '3.21.1'),
             ('3.21.1', '3.21.2'),
             ('3.21.2', '3.22.0'),
@@ -59,7 +62,7 @@ class VersionsTest(unittest.TestCase):
         # WHEN:
         result = compute_diff_versions(versions)
         # THEN:
-        self.assertEqual(result, expectation)
+        self.assertEqual(expectation, result)
 
     def test_compute_diff_versions_5(self):
         # GIVEN:
@@ -70,19 +73,22 @@ class VersionsTest(unittest.TestCase):
             (3, 21, 2),
             (3, 22, 0),
             (3, 22, 1),
+            (4, 0, 0),
+            (4, 1, 0),
         ]
         expectation = [
             ('3.20.0', '3.21.0'),
-            ('3.21.0', '3.22.0'),
             ('3.21.0', '3.21.1'),
             ('3.21.1', '3.21.2'),
             ('3.21.2', '3.22.0'),
             ('3.22.0', '3.22.1'),
+            ('3.22.1', '4.0.0'),
+            ('4.0.0', '4.1.0'),
         ]
         # WHEN:
         result = compute_diff_versions(versions)
         # THEN:
-        self.assertEqual(result, expectation)
+        self.assertEqual(expectation, result)
 
 
 if __name__ == '__main__':

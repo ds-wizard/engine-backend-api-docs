@@ -10,30 +10,41 @@ def get_versions(specs_dir: pathlib.Path):
 
 
 def compute_diff_versions(versions):
-    major = 3
-
-    minors = set()
-    for (_, minor, _) in versions:
-        minors.add(minor)
-    minors = list(minors)
-
     diffs = []
-    for minor in minors:
-        if (minor - 1) in minors:
-            diffs.append((f'{major}.{minor - 1}.0', f'{major}.{minor}.0'))
 
-    for minor in minors:
-        patches = []
-        for (_, v_minor, v_patch) in versions:
-            if minor == v_minor:
-                patches.append(v_patch)
-
-        for patch in patches:
-            if (patch - 1) in patches:
-                diffs.append((f'{major}.{minor}.{patch - 1}', f'{major}.{minor}.{patch}'))
-
-        last_patch = patches[-1]
-        if last_patch != 0 and (minor + 1) in minors:
-            diffs.append((f'{major}.{minor}.{last_patch}', f'{major}.{minor + 1}.0'))
+    for current_version in versions:
+        previous_version = get_previous_version(current_version, versions)
+        if previous_version is not None:
+            diffs.append((
+                f'{previous_version[0]}.{previous_version[1]}.{previous_version[2]}',
+                f'{current_version[0]}.{current_version[1]}.{current_version[2]}'
+            ))
 
     return diffs
+
+
+def get_previous_version(current_version: (int, int, int), versions: [(int, int, int)]) -> (int, int, int):
+    # 1. Define variables
+    (current_major, current_minor, current_patch) = current_version
+    minors = sorted([minor for (_, minor, _) in versions], reverse=True)
+    patches = sorted([patch for (_, _, patch) in versions], reverse=True)
+
+    # 2. Try decrease patch
+    previous_version = (current_major, current_minor, current_patch - 1)
+    if previous_version in versions:
+        return previous_version
+
+    # 3. Try decrease minor
+    for patch in patches:
+        previous_version = (current_major, current_minor - 1, patch)
+        if previous_version in versions:
+            return previous_version
+
+    # 4. Try decrease major
+    for minor in minors:
+        for patch in patches:
+            previous_version = (current_major - 1, minor, patch)
+            if previous_version in versions:
+                return previous_version
+
+    return None
