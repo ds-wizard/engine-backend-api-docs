@@ -8,6 +8,10 @@ jobs:
     name: Build API Docs
     runs-on: ubuntu-22.04
 
+    permissions:
+      pages: write
+      id-token: write
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -24,12 +28,20 @@ jobs:
       - name: Build
         run: |
           make build
+          mv output _site
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: output
-          path: ./output
+          path: ./_site
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v3
 
   docker:
     name: Docker
