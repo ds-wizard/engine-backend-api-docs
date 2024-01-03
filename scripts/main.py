@@ -63,7 +63,7 @@ def create_api_docs_html(versions):
     for (major, minor, patch) in reversed(versions):
         api_docs_rows.append(f'<tr>'
                              f'<td scope="row">{major}.{minor}.{patch}</td>'
-                             f'<td><a href="/swagger-ui/?spec=/specs/{major}.{minor}.{patch}.json" target="_blank">Swagger UI</a></td>'
+                             f'<td><a href="/swagger-ui/index.html?spec=/specs/{major}.{minor}.{patch}.json" target="_blank">Swagger UI</a></td>'
                              f'<td><a href="./{SPECS_DIRNAME}/{major}.{minor}.{patch}.json" target="_blank">swagger.json</a></td>'
                              f'</tr>')
     return '\n'.join(api_docs_rows)
